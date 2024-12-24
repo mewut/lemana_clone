@@ -61,8 +61,7 @@ def create_order(request):
             )
             cart_item.product.stock -= cart_item.quantity
             cart_item.product.save()
-        cart_items.delete()
-        cart.delete()
+        cart_items.delete()  # Удаляем только элементы корзины, но не саму корзину
     return JsonResponse({'status': 'success', 'order_id': order.id})
 
 
