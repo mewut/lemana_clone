@@ -1,7 +1,10 @@
+# views.py
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.db import transaction
 from .models import *
+from .services import add_to_cart
+from django.contrib.auth.decorators import login_required
 
 
 def product_list(request):
@@ -26,14 +29,12 @@ def product_detail(request, product_id):
     return render(request, 'shop/product_detail.html', context)
 
 
-def add_to_cart(request, product_id):
+@login_required
+def add_to_cart_view(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    cart, created = Cart.objects.get_or_create(user=request.user)
-    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-    if not created:
-        cart_item.quantity += 1
-        cart_item.save()
-    return JsonResponse({'status': 'success', 'quantity': cart_item.quantity})
+    quantity = int(request.POST.get('quantity', 1))
+    add_to_cart(request.user, product, quantity)
+    return JsonResponse({'status': 'success'})
 
 
 def cart_detail(request):
