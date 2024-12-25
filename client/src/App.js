@@ -1,23 +1,26 @@
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import axios from 'axios';
+import ProductList from './components/ProductList/ProductList';
 
-function App() {
+const App = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8000/api/products/')
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the products!', error);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProductList products={products} />
     </div>
   );
-}
+};
 
 export default App;
