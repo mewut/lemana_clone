@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  background-color: red;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+.logo-slider {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.logo-slider .slide {
+  position: absolute; 
+  opacity: 0;
+  transition: opacity 2s ease-in-out; 
+}
+
+.logo-slider .slide.active {
+  opacity: 1; 
+}
