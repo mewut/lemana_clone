@@ -73,6 +73,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .search-icon {
@@ -112,6 +113,22 @@
 }
 
 .city-name {
+  display: flex;
   font-size: 0.8vw;
   font-weight: bold;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2vw;
+}
+
+.city-name img {
+  width: 1.3vw;
+  height: 1.5vw;
+}
+
+.wrapper-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vw;
 }

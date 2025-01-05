@@ -1,7 +1,7 @@
 import './Header.css';
 import { logo1, logo2, logo3 } from '../../media/logo/logo.js';
 import { SetStateAction, useEffect, useState } from 'react';
-import { menu, search } from '../../media/icons/icons.js';
+import { arrow, menu, profile, search, cart, favorites } from '../../media/icons/icons.js';
 
 const Header = () => {
   const logos = [logo1, logo2, logo3];
@@ -96,13 +96,13 @@ const Header = () => {
         </form>
         <div className='city'>
           <div className='city-label'>Город</div>
-          <div className='city-name'>{city}</div>
+          <div className='city-name'>{city}<img src={arrow} /></div>
         </div>
       </div>
       <div className='wrapper-profile'>
-        <button>profile</button>
-        <button>favorites</button>
-        <button>cart</button>
+        <button className='profile'><img src={profile} /></button>
+        <button className='favorites'><img src={favorites} /></button>
+        <button className='cart'><img src={cart} /></button>
       </div>
     </div>
   );
