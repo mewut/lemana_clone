@@ -133,14 +133,14 @@
   flex-direction: row;
   align-content: center;
   justify-content: center;
+  gap: 1vw;
 }
 
 .wrapper-profile button {
   background-color: #e3e1d8;
   border: none;
   cursor: pointer;
-  padding: 0.5vw; 
-  margin: 0.3vw;
+  padding: 0.8vw;
   border-radius: 50%; 
   display: flex;
   align-items: center;
