@@ -100,9 +100,9 @@ const Header = () => {
         </div>
       </div>
       <div className='wrapper-profile'>
-        <button className='profile'><img src={profile} className='icon' /></button>
-        <button className='favorites'><img src={favorites} className='icon' /></button>
-        <button className='cart'><img src={cart} className='icon' /></button>
+        <button className='profile' data-tooltip='Профиль'><img src={profile} className='icon' /></button>
+        <button className='favorites' data-tooltip='Мой список'><img src={favorites} className='icon' /></button>
+        <button className='cart' data-tooltip='Корзина'><img src={cart} className='icon' /></button>
       </div>
     </div>
   );
