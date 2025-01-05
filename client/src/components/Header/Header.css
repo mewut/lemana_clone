@@ -127,8 +127,27 @@
 }
 
 .wrapper-profile {
+  width: 15vw;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 1vw;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.wrapper-profile button {
+  background-color: #e3e1d8;
+  border: none;
+  cursor: pointer;
+  padding: 0.5vw; 
+  margin: 0.3vw;
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper-profile .icon {
+  max-width: 2.2vw;
+  max-height: 2.5vh;
 }

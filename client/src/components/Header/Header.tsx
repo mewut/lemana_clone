@@ -49,7 +49,7 @@ const Header = () => {
   }, []);
 
   const getCityName = async (latitude: number, longitude: number) => {
-    const apiKey = process.env.REACT_APP_API_KEY; 
+    const apiKey = process.env.REACT_APP_API_KEY;
     const apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${apiKey}`;
 
     try {
@@ -100,9 +100,9 @@ const Header = () => {
         </div>
       </div>
       <div className='wrapper-profile'>
-        <button className='profile'><img src={profile} /></button>
-        <button className='favorites'><img src={favorites} /></button>
-        <button className='cart'><img src={cart} /></button>
+        <button className='profile'><img src={profile} className='icon' /></button>
+        <button className='favorites'><img src={favorites} className='icon' /></button>
+        <button className='cart'><img src={cart} className='icon' /></button>
       </div>
     </div>
   );
