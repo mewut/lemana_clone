@@ -1,13 +1,14 @@
 import './Header.css';
 import { logo1, logo2, logo3 } from '../../media/logo/logo.js';
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { arrow, menu, profile, search, cart, favorites } from '../../media/icons/icons.js';
+import Search from './Search/Search';
 
 const Header = () => {
   const logos = [logo1, logo2, logo3];
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [searchQuery, setSearchQuery] = useState('');
   const [city, setCity] = useState('');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,15 +17,6 @@ const Header = () => {
 
     return () => clearInterval(interval);
   }, [logos.length]);
-
-  const handleSearchChange = (e: { target: { value: SetStateAction<string>; }; }) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleSearchSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    // сюда логику обработки поиска
-  };
 
   useEffect(() => {
     // фиктивные координаты для тестирования
@@ -68,6 +60,10 @@ const Header = () => {
     }
   };
 
+  const handleSearchClick = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
   return (
     <div className='header'>
       <div className='logo-slider'>
@@ -81,19 +77,26 @@ const Header = () => {
         ))}
       </div>
       <div className='wrapper-search'>
-        <button className='menu'><img src={menu} /></button>
-        <form onSubmit={handleSearchSubmit} className='search-form'>
-          <div className='search-input-wrapper'>
-            <img src={search} alt='search' className='search-icon' />
-            <input
-              type='text'
-              value={searchQuery}
-              onChange={handleSearchChange}
-              placeholder='Поиск'
-              className='search-input'
-            />
-          </div>
-        </form>
+        <button className='menu'>
+          <img src={menu} />
+        </button>
+        <div
+          className={`search-form ${isSearchOpen ? 'expanded' : ''}`}
+          onClick={handleSearchClick}
+        >
+          {isSearchOpen ? (
+            <Search />
+          ) : (
+            <div className='search-input-wrapper'>
+              <img src={search} alt='search' className='search-icon' />
+              <input
+                type='text'
+                placeholder='Поиск'
+                className='search-input'
+              />
+            </div>
+          )}
+        </div>
         <div className='city'>
           <div className='city-label'>Город</div>
           <div className='city-name'>{city}<img src={arrow} /></div>
